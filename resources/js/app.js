@@ -22,7 +22,6 @@ window.Vue = require('vue').default;
 Vue.component('v-dropdown', require('./components/DropDown.vue').default);
 Vue.component('v-follow', require('./components/FollowComponent.vue').default);
 Vue.component('v-post', require('./components/PostView.vue').default);
-Vue.component('v-file', require('./components/FileView.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -22,16 +22,14 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
-    {   
-        $id = Auth::user()->id;
-        $posts = Post::where('user_id', $id)->orderBy('id', 'DESC')->get();
-        return view('formPost', compact('posts'));
+    {
+        $auth = auth()->user();
+        $posts = $auth->post->all();
+        // dd($posts); //For Single(Parent) Post :Description Only
+        $postItems = $posts[0]->files->all(); //Accessing Post Files you can Reverse with first
+        $postArray = json_encode($postItems);
+        return view('profiles.formPost', compact('posts', 'postArray'));
     }
 
     /**
@@ -76,7 +74,7 @@ class PostController extends Controller
                     'post_id' => $post_id["id"]
                 ]);
             }
-                
+
         }
         return redirect('post');
     }
@@ -87,12 +85,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($post)
     {
-        return $id;
-        // $id = Auth::user()->id;
-        // $posts = Post::where('user_id', $id)->orderBy('id', 'DESC')->get();
-        // return view('formPost', compact('posts'));
+        //$auth = auth()->user();
+        //$posts = $auth->post->all();
+        //$postItems = $posts[0]->files->all(); //Accessing Post Files you can Reverse with first
+
+        //$postArray = json_encode($postItems);
+        $postItems = Post::find($post);
+        $items = json_encode($postItems->files->all());
+        return [$items, $postItems];
     }
 
     /**

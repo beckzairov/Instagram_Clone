@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <button class="z-10 relative flex items-center focus:outline-none select-none" @click="open = !open">
+    <button class="relative flex items-center focus:outline-none select-none" @click="open = !open">
       <slot name="button"></slot>
     </button>
 

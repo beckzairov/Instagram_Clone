@@ -19,7 +19,7 @@ class File extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function files()
+    public function post()
     {
         return $this->belongsTo(Post::class);
     }

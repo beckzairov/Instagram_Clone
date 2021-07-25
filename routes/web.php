@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,11 @@ Route::get('/prof', function(){
     return view('profile');
 });
 
-Route::post('click/{id}', [App\Http\Controllers\ClickController::class, 'store']);
+
+Route::get('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'index']);
+
+//Route::post('click/{id}', [App\Http\Controllers\PostController::class, 'show']);
+// Route::post('click/{id}', [App\Http\Controllers\ClickController::class, 'store']);
+Route::get('/searchBlade', function	(){
+	return	view('welcome');
+});

@@ -1,6 +1,6 @@
 @extends('layouts.appSec')
 
-@section('contentEx')
+@section('content')
     <div class="container pl-96 pr-96">
         <div class="grid grid-cols-3 grid-rows-auto-fit gap-2">
             <div class="flex justify-center items-center">
